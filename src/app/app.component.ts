@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart } from "chart.js";
 import { SocketService } from "./socket.service";
-import { hdccalc } from "hdccalc-leo";
 
 @Component({
   selector: "app-root",
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private srv: SocketService) {}
 
   ngOnInit() {
-    console.log(hdccalc.sum(6, 5));
     this.srv.listen("dataupdate").subscribe((res: any) => {
       console.log(res);
       this.chart.data.datasets[0].data = res;
